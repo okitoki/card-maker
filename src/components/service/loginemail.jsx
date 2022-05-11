@@ -4,8 +4,6 @@ import React, { useState } from "react";
 
 const LoginEmail = ({auth}) => {
 
-
-
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
     

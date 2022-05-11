@@ -1,48 +1,37 @@
 import React, { useEffect } from 'react';
 import LoginEmail  from './loginemail';
-import { useNavigate,  } from 'react-router-dom';
-import { signInWithRedirect, getRedirectResult, onAuthStateChanged } from "firebase/auth";
 
-function LoginUi({auth, provider}) {
- 
-    const navigate = useNavigate();
-    const goToBusinessCard =(uid)=>{
-        navigate('/businesscard',{replace:true,uid});
-        console.log(`gotoBusinessCard[uid]:${uid}`);
-    }
+// import { useNavigate,  } from 'react-router-dom';
+// import { onAuthStateChanged,} from "firebase/auth";
+
+function LoginUi({LOGINSERVER}) {
+
+    // const navigate = useNavigate();
+    // const goToBusinessCard =(uid)=>{
+    //     navigate('/businesscard',{replace:true,uid});
+    //     console.log(`gotoBusinessCard[uid]:${uid}`);
+    // }
 
     useEffect(()=>{
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const uid = user.uid;
-                console.log(`onAuthStateChange:${uid}`);
-                navigate('/businesscard',{replace:true,uid});
-            } else {
-                navigate('/login');
-            }
-            });
+        // const onAuthChange = (auth) => {
+
+        // }
+
     })
 
-    const _auth = auth;
-    const _provider = provider;
-        getRedirectResult(_auth)
-        .then((result) => {
-            goToBusinessCard(result.user.uid);
-        }).catch((error) => {
-            console.log(`errorMessage:${error}`);
-    });
-
-        const googleLogin = () => {
-            signInWithRedirect(_auth, _provider);
-        }
+    const google_login = () =>{
+        LOGINSERVER.service('googleLogin');
+    }
+    const imgName = "btn_google_signin" ;   
+    const imgUrl = "/images/" + imgName + ".png" ;
             return (
                 <div className="card_wrap">
                     <h1>Business Card Maker</h1>
                     <h2>Login</h2>
                     <div>  
-                        <LoginEmail auth={auth}></LoginEmail>
+                        <LoginEmail></LoginEmail>
                     </div>
-                    <button onClick={googleLogin}>Google</button>
+                    <img className = "google_login_button_img" onClick = {google_login} src ={imgUrl} alt={imgName} title ={imgName} />
                     <span>Code Your Dream</span>
                 </div>
             );
