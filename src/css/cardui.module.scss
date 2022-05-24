@@ -3,55 +3,68 @@ $bodybgcolor:#00aa74;
 $footerbgcolor:#bfffeb;
 $widthvalu:500px;
 $width100:100%;
-body{
-    background-color:$bodybgcolor;
-    overflow-x: hidden;
-}
+
+// body{
+//     background-color:$bodybgcolor;
+//     overflow-x: hidden;
+//     width:100%;
+//     height:100%;
+// }
+
+
 .cardhead{
-    position: absolute;
-    top:0;left:0;
+    position: absolute ;top:0px; left:0px;
     width:$width100;
     height:30px;
     color:#fff;
     line-height: 30px;
     font-size:0.7rem;
     background-color: $topbgcolor;
-
+    z-index: 2;
+    padding-left:10px;
 
     .sitename{
         display:inline;
     }
     .username{
         float:right;
-
+    padding-right:20px;
     }
 }
 
+
 .cardbody{
-    position: absolute;
-    top:30px;
+    margin-top:30px;
     width:$widthvalu;
     background-color:$bodybgcolor;
     display:flex;
     flex-direction: column;
-
 }
 
+.addCard{
+    width:100%;
+    height:100vh;
+}
 .cardfooter{
-    width:$width100;
-    height:40px;
-    background-color: $footerbgcolor;
-    line-height: 40px;
-    position: absolute;
-    bottom: 0px; left: 0px;
-    text-align:center;
-    font-size:0.7rem;
+   position:relative;
+   width:$width100;
+
+   height:40px;
+   background-color: $footerbgcolor;
+   line-height: 40px;
+   text-align:center;
+   font-size:0.7rem;
 }
 
 .buttoncardplus{
     width:$widthvalu;
     padding:20px;
     text-align:center;
+}
+.btncir{
+    color:#fff;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 .cardsection{
@@ -61,23 +74,31 @@ body{
     height:230px;
     background-color:#ffffff;
     margin-bottom:20px;
-    padding:10px 20px 10px 10px;
+    padding: 20px 20px 10px 0px;
     box-shadow: 0 1.5em 0 -1em lightgreen;
-    .cardimg {
+
+    .cardimg{
+
         display:block;
         width:150px;
-        height:200px;
-        margin-bottom:10px;
+        height:220px;
+        .imgsize{
+            font-size:0.6em;
+        }
     }
-
+    .loadingprogress {
+        display:flex;
+        width:150px;
+        height:200px;
+        align-items: center;
+        justify-content: space-around;
+    }
     .cardItemBg {
         padding-left:20px;
         width:350px;
         height:150px; 
         li{
             font-size:0.8rem;
-            
-     
         }
         #standard-size-small{
             font-size:9px;
@@ -89,7 +110,11 @@ body{
     }
 
     .filebutton{
-        display:none;
+       display:none;
+    }
+
+    .fileIcon{
+        cursor: pointer;
     }
 
 }

@@ -1,27 +1,30 @@
-import { Routes, Route, useNavigate} from "react-router-dom";
-import CardUi from "./components/ui/cardui";
-import LoginUi from "./components/ui/loginui";
-import {authService } from './components/service/firebaseconfig';
+import {Routes, Route} from "react-router-dom";
+import CardUi from "components/ui/cardui";
+import LoginUi from "components/ui/loginui";
+import {authService } from 'components/service/firebaseconfig';
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import "./css/app.css";
 import { useEffect, useState } from "react";
 import { ThemeProvider } from '@mui/material/styles';
-import theme from 'commonjs/theme';
 import { memberLogout } from "components/member/member";
+import "css/app.css";
+
+import theme from 'commonjs/theme';
 
 export default function App() {
-  
+
   if (process.env.NODE_ENV === "production") {
-    console.log = function no_console() {};
-    console.warn = function no_console() {};
+        console.log = function no_console() {};
+        console.warn = function no_console() {};
   }
 
-const navigate = useNavigate();
-const [userSignIn={state:false, uid:null}, setUserSignIn] = useState(); 
+const _state = JSON.parse(localStorage.getItem('state'));
+//const navigate = useNavigate();
+const [userSignIn={state:_state, uid:null}, setUserSignIn] = useState(); 
 const auth = authService;
+const uid = userSignIn.uid;
 
 useEffect(()=>{
-      onAuthStateChanged(auth, (user) => {
+      onAuthStateChanged(authService, (user) => {
         if (user) {
               setUserSignIn(()=>{
                  const userSignin = {state:true, uid:user.uid};
@@ -34,10 +37,12 @@ useEffect(()=>{
               )
         }
       });
-},[]);
+},[auth]);
 
-const uid = userSignIn.uid;
+
+
 //JSON.parse(localStorage.getItem('uid'));
+//ddd
 console.log(`[uid]:${uid}`);
 const logOut = () =>{
 
@@ -59,8 +64,9 @@ const logOut = () =>{
   return (
     <ThemeProvider theme={theme}>        
         <Routes>
+            {/* <Route path="/" element ={<main><p>Loadding....</p></main>} /> */}
             {userSignIn.state?<Route path="/" element = {<CardUi logOut={logOut} uId={userSignIn.uid}/>}/> : <Route path="/" element={<LoginUi/>} /> }
-            <Route path="*" element ={<main><p>Loadding....</p></main>} />
+            
         </Routes></ThemeProvider>
 
   );

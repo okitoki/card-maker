@@ -6,7 +6,7 @@ export default function CarduiFooter(props) {
 
     return (
         <div className={styles.cardfooter}>
-copyright 404-workshop.kr all right.
+            copyright 404-workshop.kr all right.
         </div>
     );
 }

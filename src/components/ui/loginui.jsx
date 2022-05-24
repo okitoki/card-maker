@@ -5,11 +5,11 @@ import TextField from '@mui/material/TextField';
 import { createEmailMember, memberLogin } from 'components/member/member';
 import { googleLoginPop } from 'components/service/authservice';
 
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
-const Boxs = styled(Box)`
-  padding-bottom: 40px;
-`;
+// const Boxs = styled(Box)`
+  // padding-bottom: 40px;
+// `;
   
 function LoginUi() {
 
@@ -37,12 +37,13 @@ const handleSubmit = (event) =>{
 
             setInfo(info);
 }
-
+console.log(info);
 const googleLogin = () =>{
  googleLoginPop();
 }
           return (
-                <>   
+                <> 
+                <section  className="cardWrap">
                 <div className="card">
                     <header className="head">PHYOONG PHYOONG NAME BOOK</header>
                     <Box component="form" id="sform" noValidate  >
@@ -65,16 +66,16 @@ const googleLogin = () =>{
                                 name="password"
                                 /></li>
                         <li>
-                        <Button fullWidth type="submit" onClick={handleSubmit} value="signin" variant="outlined" color ="primary" disableElevation>sign in</Button> 
-
+                        <Button fullWidth type="submit" value="signin" variant="outlined" color ="primary" disableElevation onClick={handleSubmit} >sign in</Button> 
+                        
                         </li>
-                        <li><Button variant="text"  onClick={handleSubmit} value="joinin" type="submit" color ="primary" disableElevation>회원가입</Button> </li>
+                        <li><Button  type="submit" value="joinin" size='middle' variant="text" color ="primary" disableElevation onClick={handleSubmit} >회원가입</Button> </li>
                         <li><Button color="primary" onClick={googleLogin}>구글로그인</Button></li>
                         <li></li>
                     </ul>
                     </Box>
                 </div>
-
+                </section>  
                   </>
             );
 }

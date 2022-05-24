@@ -1,4 +1,4 @@
-import { authService } from 'components/service/firebaseconfig';
+import { authService } from '../service/firebaseconfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
 let uId = "";
@@ -12,7 +12,7 @@ export function createEmailMember (email,password){
         }).catch((error) => {
               // var errorCode = error.code;
               var errorMessage = error.message;
-              console.log(`CreateUser fail!!`);
+              console.log(errorMessage);
         });
 
       return uId;

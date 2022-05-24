@@ -1,9 +1,7 @@
-import {  FacebookAuthProvider, getAuth, getRedirectResult, GoogleAuthProvider, 
+import {  FacebookAuthProvider, getRedirectResult, GoogleAuthProvider, 
      signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { authService } from "./firebaseconfig";
    
-
-
 export function googleLoginPop() {
                     const provider = new GoogleAuthProvider();
                     signInWithPopup(authService, provider)
@@ -17,7 +15,6 @@ export function googleLoginPop() {
                         return;               
 }
   
-
 export function googleLoginRedirect() {
                     const provider = new GoogleAuthProvider();
                     signInWithRedirect(authService, provider);
